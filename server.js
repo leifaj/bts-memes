@@ -44,7 +44,6 @@ app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
-
 app.use(express.static(path.join(__dirname, "./client/build")));
 
 
@@ -143,11 +142,6 @@ app.delete('/deleteMeme', (req, res) => {
 })
 
 // ROUTES --------------------------------
-
-// Return all memes
-// app.get('/searchMeme', (req, res) => {
-// IMPLEMENT THIS!!!!!
-// })
 
 // Return all memes
 app.get('/memes', (req, res) => {
