@@ -1,0 +1,328 @@
+:root {
+  --light-purple: rgb(176, 155, 203);
+  --dark-purple: rgb(102, 71, 138);
+  --glow-purple: rgb(173, 128, 225);
+
+  --columns: 4;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--dark-purple);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--glow-purple);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: white;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  font-size: 16px;
+  font-family: "Rubik", sans-serif;
+  font-weight: 600;
+  color: var(--dark-purple);
+  text-decoration: none;
+}
+
+html {
+  font-size: 16px;
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+  color: var(--dark-purple);
+  text-decoration: none;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  background-color: var(--light-purple);
+}
+
+header {
+  width: 100%;
+  padding: 1rem 2rem;
+  background-color: white;
+  color: var(--light-purple);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+main {
+  padding: 4rem;
+
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--dark-purple);
+  justify-self: center;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: white;
+}
+
+.filter-section .form-inputs {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+}
+
+.filter-section button {
+  margin-left: 1rem;
+}
+
+
+form {
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+  border: 1px solid --dark-purple;
+  font-size: 1rem;
+}
+
+.form-section .form-inputs {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.form-section .form-input {
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+  background-color: rgba(198, 183, 218, 0.35);
+  border: none;
+  padding: 0.5em 1em;
+  border-radius: 0.5rem;
+  font-family: "Rubik", sans-serif;
+  color: var(--dark-purple);
+  font-size: 1rem;
+}
+
+.input:focus,
+.submit-btn:focus {
+  border: 2px solid var(--light-purple);
+  box-shadow: 0 0 10px var(--glow-purple);
+}
+
+label {
+  display: block;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+textarea {
+  font-family: "Rubik", sans-serif;
+  color: var(--dark-purple);
+  resize: vertical;
+  min-height: 2em;
+}
+
+button,
+input[type=file]::file-selector-button,
+input[type=file]::-webkit-file-upload-button {
+  background-color: white;
+  border: 1px solid var(--dark-purple);
+  padding: 0.5rem 1.5rem;
+  font-family: "Rubik", sans-serif;
+  color: var(--dark-purple);
+  border-radius: 5px;
+}
+
+input[type=file]::file-selector-button,
+input[type=file]::-webkit-file-upload-button {
+  margin-right: 1rem;
+}
+
+.submit-btn {
+  background-color: var(--dark-purple);
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  align-self: center;
+}
+
+.meme-list {
+  column-count: var(--columns);
+  column-gap: 1em;
+  flex-direction: column-reverse;
+  width: 100%;
+  height: 100%;
+}
+
+button:hover,
+input[type=file]::file-selector-button:hover {
+  background: var(--light-purple);
+  color: white;
+  transition: .2s ease;
+  cursor: pointer;
+}
+
+.meme {
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  break-inside: avoid;
+
+  margin-bottom: 1em;
+  padding-bottom: -1em;
+  border: 5px solid var(--dark-purple);
+  border-radius: 0.5em;
+  overflow: hidden;
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+
+
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.meme::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0; 
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0);
+  object-fit: contain;
+}
+
+.meme:hover::before {
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  top: 0; 
+  bottom: 0;
+  transition: .35s ease;
+}
+
+.meme img {
+  width: 100%;
+  height: 100%;
+  vertical-align: bottom;
+}
+
+#memeInfo {
+  display: none;
+}
+
+#memeDescription {
+  font-style: italic;
+}
+
+#memeMember,
+#memeCategory {
+  font-weight: 600;
+}
+
+.meme:hover #memeInfo {
+  width: 100%;
+  height: 100%;
+  color: white;
+  text-align: center;
+  padding: 1em;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+
+.imageUpload {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+
+.imageUpload > section {
+  flex-basis: 48%;
+}
+
+.upload {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.upload p {
+  font-size: 1.5rem;
+  font-style: italic;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+}
+
+
+
+
+
+

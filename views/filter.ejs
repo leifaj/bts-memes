@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BTS Memes API</title>
+  <link href="css/reset.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+</head>
+<body>
+  <header>
+    <h1>BTS Memes API</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/add">Add Meme</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="filter-section">
+      <h2>Filter Memes</h2>
+      <form action="/filter" method="GET" enctype="multipart/form-data">
+      <div class="form-inputs">
+        <div class="form-input">
+          <label for="member">Member</label>
+          <select name="member" class="input">
+            <option value="All">All</option>
+            <option value="Namjoon">Namjoon</option>
+            <option value="Jin">Jin</option>
+            <option value="Yoongi">Yoongi</option>
+            <option value="J-Hope">J-Hope</option>
+            <option value="Jimin">Jimin</option>
+            <option value="Taehyung">Taehyung</option>
+            <option value="Jungkook">Jungkook</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-input">
+          <label for="category">Category</label>
+          <select name="category" class="input">
+            <option value="All">All</option>
+            <optgroup label="Positive">
+              <option value="Like">Like</option>
+              <option value="Funny">Funny</option>
+              <option value="Love">Love</option>
+            </optgroup>
+            <optgroup label="Negative">
+              <option value="Anger">Anger</option>
+              <option value="Fear">Fear</option>
+              <option value="Dislike">Dislike</option>
+              <option value="Jealousy">Jealousy</option>
+              <option value="Pain">Pain</option>
+              <option value="Sadness">Sadness</option>
+              <option value="Struggling">Struggling</option>
+            </optgroup>
+            <optgroup label="Neutral">
+              <option value="Confusion">Confusion</option>
+              <option value="I'm a mess">I'm a mess</option>
+              <option value="Shock">Shock</option>
+              <option value="Unbothered">Unbothered</option>
+              <option value="Other">Other</option>
+            </optgroup>
+          </select>
+        </div>
+        <button type="submit" class="submit-btn">Search</button>
+      </div>
+      </form>
+    </section>
+
+    <section class="list-section">
+      <h2>Meme List</h2>
+      <ul class="meme-list">
+        <% for(let i = 0; i < memeData.length; i++) {%>
+          <li class="meme">
+            <img id="memeImage" src="<%= memeData[i].imageUrl %>">
+            <div id="memeInfo">
+              <p id="memeDescription"><%= memeData[i].description %></p>
+              <span id="memeMember"><%= memeData[i].member %></span>
+              <span id="memeCategory"><%= memeData[i].category %></span>
+              <button id="deleteButton" idDatabase="<%= memeData[i]._id %>" idCloudinary="<%= memeData[i].idCloudinary %>">Delete</button>
+            </div>
+          </li>
+        <% } %>
+        </ul>
+    </section>
+  </main>
+
+  
+
+  <script src='js/main.js'></script>
+
+</body>
+</html>
