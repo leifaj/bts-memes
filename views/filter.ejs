@@ -18,7 +18,6 @@
     <nav>
       <a href="/">Home</a>
       <a href="/filter">Memes</a>
-      <a href="/add">Add</a>
     </nav>
   </header>
 
@@ -82,7 +81,6 @@
               <p id="memeDescription"><%= memeData[i].description %></p>
               <span id="memeMember"><%= memeData[i].member %></span>
               <span id="memeCategory"><%= memeData[i].category %></span>
-              <button id="deleteButton" idDatabase="<%= memeData[i]._id %>" idCloudinary="<%= memeData[i].idCloudinary %>">Delete</button>
             </div>
           </li>
         <% } %>

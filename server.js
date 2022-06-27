@@ -2,12 +2,6 @@ const express = require('express')
 const PORT = process.env.PORT || 3000
 const MongoClient = require('mongodb').MongoClient
 const ObjectId = require('mongodb').ObjectId; 
-const cors = require('cors')
-const path = require('path')
-const cloudinary = require('cloudinary').v2
-const multer = require('multer')
-const { CloudinaryStorage } = require("multer-storage-cloudinary");
-const { json } = require('express');
 const app = express()
 querystring = require('querystring')
 url = require('url')
@@ -24,28 +18,11 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
     memeCollection = db.collection('memes')
   })
 
-cloudinary.config({
-  cloud_name: process.env.CL_CLOUDNAME,
-  api_key: process.env.CL_KEY,
-  api_secret: process.env.CL_SECRET,
-});
-
-const storage = new CloudinaryStorage({
-  cloudinary: cloudinary,
-  params: {
-    folder: "bts-memes",
-  },
-});
-
-const upload = multer({ storage: storage });
-
 // Middleware
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
-app.use(express.static(path.join(__dirname, "./client/build")));
-
 
 // Read (Get)
 app.get('/', (req, res) => {
@@ -78,85 +55,11 @@ app.get('/filter', (req, res) => {
   .catch(err => console.error(err))
 })
 
-// Read (Get)
-app.get('/add', (req, res) => {
-  memeCollection.find().toArray()
-  .then(data => {
-    res.render('add.ejs', { memeData: data })
-  })
-  .catch(err => console.error(err))
-})
-
-// Create (Post)
-app.post('/addMeme', upload.single('memeImage'), (req, res) => {
-  memeCollection.insertOne({
-    member: req.body.member,
-    category: req.body.category,
-    description: req.body.description,
-    imageUrl: req.file.path,
-    idCloudinary: req.file.filename
-  })
-  .then(result => {
-    console.log('Meme added')
-    // res.redirect('/')
-    res.render('image', {
-      member: req.body.member,
-      category: req.body.category,
-      description: req.body.description,
-      imageUrl: req.file.path,
-    });
-  })
-  .catch(err => console.log(err))
-})
-
-// Edit (Put)
-// app.put('/editMeme', (req, res) => {
-//   memeCollection.updateOne(
-//     {_id: ObjectId(req.body.idDatabase)},
-//     {$set: {
-//       member: req.body.member.toLowerCase(),
-//       category: req.body.category.toLowerCase(),
-//       description: req.body.description,
-//       tags: req.body.tags.toLowerCase(),
-//       imageUrl: req.file.path,
-//       idCloudinary: req.file.filename
-//     }}
-//   )
-//   .then(result => {
-//       console.log('Meme updated')
-//       res.json('Meme updated')
-//   })
-//   .catch(err => console.log(err))
-// })
-
-// Delete
-app.delete('/deleteMeme', (req, res) => {
-  memeCollection.deleteOne({_id: ObjectId(req.body.idDatabase)})
-  .then(result => {
-    cloudinary.uploader.destroy(req.body.idCloudinary, (err, res) => console.log(err, res))
-    console.log('Meme deleted')
-    res.json('Meme deleted')
-  })
-  .catch(err => console.log(err))
-})
-
-// ROUTES --------------------------------
+// PUBLIC API ROUTES --------------------------------
 
 // Return all memes
 app.get('/memes', (req, res) => {
   memeCollection.find().toArray()
-  .then(data => {
-    res.status(200).json({"member": data[0].member,
-    "category": data[0].category,
-    "description": data[0].description,
-    "imageUrl": data[0].imageUrl})
-  })
-  .catch(err => console.error(err))
-})
-
-// Return meme by id
-app.get('/memes/id/:id', (req, res) => {
-  memeCollection.find({"_id": ObjectId(req.params.id)}).toArray()
   .then(data => {
     res.status(200).json({"member": data[0].member,
     "category": data[0].category,
