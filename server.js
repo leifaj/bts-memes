@@ -1,5 +1,4 @@
 const express = require('express')
-const PORT = process.env.PORT || 3000
 const MongoClient = require('mongodb').MongoClient
 const ObjectId = require('mongodb').ObjectId; 
 const app = express()
@@ -122,6 +121,6 @@ app.get('/memes/random', (req, res) => {
   .catch(err => console.error(err))
 })
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}.`)
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`Server running.`)
 })
