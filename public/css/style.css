@@ -3,7 +3,7 @@
   --dark-purple: rgb(102, 71, 138);
   --glow-purple: rgb(173, 128, 225);
 
-  --columns: 4;
+  --columns: 1;
 }
 
 ::-webkit-scrollbar {
@@ -26,18 +26,18 @@
   box-sizing: border-box;
 }
 
-a {
-  font-size: 16px;
-  font-family: "Rubik", sans-serif;
-  font-weight: 600;
-  color: var(--dark-purple);
-  text-decoration: none;
-}
-
 html {
   font-size: 16px;
   font-family: "Rubik", sans-serif;
   font-weight: 400;
+  color: var(--dark-purple);
+  text-decoration: none;
+}
+
+a {
+  font-size: 16px;
+  font-family: "Rubik", sans-serif;
+  font-weight: 600;
   color: var(--dark-purple);
   text-decoration: none;
 }
@@ -67,7 +67,7 @@ nav {
 }
 
 main {
-  padding: 4rem;
+  padding: 3rem 2rem;
 
   display: flex;
   flex-flow: column;
@@ -87,21 +87,88 @@ h2 {
   font-size: 1.5rem;
   font-weight: 600;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   color: white;
 }
 
-.filter-section .form-inputs {
+.intro h2 {
+  font-size: 2rem;
+  line-height: 1.5;
+}
+
+main > section h2 {
+  margin: 0;
+}
+
+main > section {
   display: flex;
-  justify-content: flex-start;
+  flex-flow: column nowrap;
+  justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 2rem;
 }
 
-.filter-section button {
-  margin-left: 1rem;
+.randomMeme {
+  max-width: 95vw;
 }
 
+.bottom {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+
+.bottom > section {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+table,
+th,
+td {
+  border: 5px solid var(--dark-purple);
+  text-align: center;
+  background-color: rgba(102, 71, 138, 0.4);
+  color: white;
+}
+
+table {
+  width: 100%;
+}
+
+td {
+  text-align: left;
+}
+
+th {
+  font-weight: 600;
+}
+
+th, td {
+  padding: 1.25em;
+}
+
+.endpoints {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  text-align: center;
+}
+
+.endpoint {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1em;
+}
 
 form {
   background-color: white;
@@ -112,15 +179,20 @@ form {
   font-size: 1rem;
 }
 
-.form-section .form-inputs {
+.form-inputs {
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: flex-start;
   gap: 2rem;
+  min-width: 100%;
 }
 
-.form-section .form-input {
+.filter-section button {
+  margin-left: 1rem;
+}
+
+.form-input {
   width: 100%;
 }
 
@@ -154,6 +226,14 @@ textarea {
   min-height: 2em;
 }
 
+.submit-btn {
+  background-color: var(--dark-purple);
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  align-self: center;
+}
+
 button,
 input[type=file]::file-selector-button,
 input[type=file]::-webkit-file-upload-button {
@@ -163,19 +243,12 @@ input[type=file]::-webkit-file-upload-button {
   font-family: "Rubik", sans-serif;
   color: var(--dark-purple);
   border-radius: 5px;
+  font-weight: 600;
 }
 
 input[type=file]::file-selector-button,
 input[type=file]::-webkit-file-upload-button {
   margin-right: 1rem;
-}
-
-.submit-btn {
-  background-color: var(--dark-purple);
-  color: white;
-  border: none;
-  padding: 0.75rem 2rem;
-  align-self: center;
 }
 
 .meme-list {
@@ -187,9 +260,20 @@ input[type=file]::-webkit-file-upload-button {
 }
 
 button:hover,
-input[type=file]::file-selector-button:hover {
-  background: var(--light-purple);
+input[type=file]::file-selector-button:hover,
+#randomButton:hover,
+.endpoint button:hover,
+.endpoint button:hover a {
+  background: var(--dark-purple);
   color: white;
+  transition: .2s ease;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background: var(--light-purple);
+  color: var(--dark-purple);
+  border: 1px solid var(--dark-purple);
   transition: .2s ease;
   cursor: pointer;
 }
@@ -199,10 +283,10 @@ input[type=file]::file-selector-button:hover {
   page-break-inside: avoid;
   break-inside: avoid;
 
-  margin-bottom: 1em;
-  padding-bottom: -1em;
+  margin-bottom: 1rem;
+  padding-bottom: -1rem;
   border: 5px solid var(--dark-purple);
-  border-radius: 0.5em;
+  border-radius: 0.5rem;
   overflow: hidden;
   box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
 
@@ -273,14 +357,14 @@ input[type=file]::file-selector-button:hover {
 
 .imageUpload {
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   justify-content: center;
   align-items: center;
   gap: 3rem;
 }
 
 .imageUpload > section {
-  flex-basis: 48%;
+  flex-basis: 100%;
 }
 
 .upload {
@@ -289,35 +373,68 @@ input[type=file]::file-selector-button:hover {
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  text-align: center;
 }
 
 .upload p {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-style: italic;
 }
 
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
+  :root {--columns: 1;}
+
+  html {
+    font-size: 12px;
+  }
+
+  main > section {
+    width: 100%;
+  }
+
 
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-
+  :root {--columns: 2;}
+  .filter-section .form-inputs {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+  }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
+  .imageUpload > section {
+    flex-basis: 45%;
+  }
 
+  .randomMeme {
+    max-width: 40vw;
+  }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+  :root {--columns: 3;}
+  .upload {
+    flex-basis: 40%;
+  }
 
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
+  :root {--columns: 4;}
+  .upload {
+    flex-basis: 30%;
+  }
 
 }
 

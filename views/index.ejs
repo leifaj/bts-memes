@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BTS Memes API</title>
+  <link href="css/reset.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+</head>
+<body>
+  <header>
+    <h1>BTS Memes API</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/filter">Memes</a>
+      <a href="/add">Add</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h2 class="intro-text">BTS memes that you can search by member and category, easily accessible through this API.
+        Now you won't have trouble finding the right reaction photo!</h2>
+    </section>
+    <section class="random">
+      <h2>Live Demo</h2>
+      <p>Hover/click the meme to see details.</p>
+      <button id="randomButton">Get Random Meme</button>
+      <section class="meme randomMeme">
+        <img id="memeImage" src="/assets/jhope-love.jpeg">
+        <div id="memeInfo">
+          <p id="memeDescription">J-Hope surrounded by hearts</p>
+          <span id="memeMember">J-Hope</span>
+          <span id="memeCategory">Love</span>
+        </div>
+      </section>
+    </section>
+
+    <section class="bottom">
+      <section class="documentation">
+        <h2>Documentation</h2>
+        <h3>There are 4 properties that come with each resource object:</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>PROPERTY</th>
+              <th>DESCRIPTION</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>member</td>
+              <td>[String] Name of the BTS member in the meme.</td>
+            </tr>
+            <tr>
+              <td>category</td>
+              <td>[String] Category of the meme, usually an emotion or theme.</td>
+            </tr>
+            <tr>
+              <td>description</td>
+              <td>[String] (Optional) Description of the meme.</td>
+            </tr>
+            <tr>
+              <td>imageUrl</td>
+              <td>[String] URL of the meme image that is hosted on Cloudinary.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="endpoint-section">
+        <h2>API Endpoints</h2>
+        <section class="endpoints">
+          <div class="endpoint">
+            <button><a href="/memes" target="_blank">GET/memes</a></button>
+            <p>Return all memes</p>
+          </div>
+          <div class="endpoint">
+            <button><a href="/memes/id/62b5503ef917c04712b6ebc2" target="_blank">GET/memes/id/:id</a></button>
+            <p>Return meme by id</p>
+          </div>
+          <div class="endpoint">
+            <button><a href="/memes/member/jungkook" target="_blank">GET/memes/member/:member</a></button>
+            <p>Return array of memes by member</p>
+          </div>
+          <div class="endpoint">
+            <button><a href="/memes/category/sadness" target="_blank">GET/memes/category/:category</a></button>
+            <p>Return array of memes by category</p>
+          </div>
+          <div class="endpoint">
+            <button><a href="/memes/random" target="_blank">GET/memes/random</a></button>
+            <p>Return a random meme</p>
+          </div>
+        </section>
+      </section>
+    </section>
+  </main>
+
+
+  <script src='js/main.js'></script>
+
+</body>
+</html>

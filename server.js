@@ -51,7 +51,7 @@ app.use(express.static(path.join(__dirname, "./client/build")));
 app.get('/', (req, res) => {
   memeCollection.find().toArray()
   .then(data => {
-    res.render('filter.ejs', { memeData: data })
+    res.render('index.ejs', { memeData: data })
   })
   .catch(err => console.error(err))
 })
@@ -73,7 +73,6 @@ app.get('/filter', (req, res) => {
     }
   ).toArray()
   .then(data => {
-    console.log(data)
     res.render('filter.ejs', { memeData: data })
   })
   .catch(err => console.error(err))
@@ -147,7 +146,10 @@ app.delete('/deleteMeme', (req, res) => {
 app.get('/memes', (req, res) => {
   memeCollection.find().toArray()
   .then(data => {
-    res.status(200).json(data)
+    res.status(200).json({"member": data[0].member,
+    "category": data[0].category,
+    "description": data[0].description,
+    "imageUrl": data[0].imageUrl})
   })
   .catch(err => console.error(err))
 })
@@ -156,7 +158,10 @@ app.get('/memes', (req, res) => {
 app.get('/memes/id/:id', (req, res) => {
   memeCollection.find({"_id": ObjectId(req.params.id)}).toArray()
   .then(data => {
-    res.status(200).json(data)
+    res.status(200).json({"member": data[0].member,
+    "category": data[0].category,
+    "description": data[0].description,
+    "imageUrl": data[0].imageUrl})
   })
   .catch(err => console.error(err))
 })
@@ -173,7 +178,10 @@ app.get('/memes/member/:member', (req, res) => {
     }
   ).toArray()
   .then(data => {
-    res.status(200).json(data)
+    res.status(200).json({"member": data[0].member,
+    "category": data[0].category,
+    "description": data[0].description,
+    "imageUrl": data[0].imageUrl})
   })
   .catch(err => console.error(err))
 })
@@ -190,7 +198,10 @@ app.get('/memes/category/:category', (req, res) => {
     }
   ).toArray()
   .then(data => {
-    res.status(200).json(data)
+    res.status(200).json({"member": data[0].member,
+    "category": data[0].category,
+    "description": data[0].description,
+    "imageUrl": data[0].imageUrl})
   })
   .catch(err => console.error(err))
 })
@@ -200,7 +211,10 @@ app.get('/memes/random', (req, res) => {
   memeCollection.aggregate([{ $sample: { size: 1 } }])
   .toArray()
   .then(data => {
-    res.status(200).json(data)
+    res.status(200).json({"member": data[0].member,
+      "category": data[0].category,
+      "description": data[0].description,
+      "imageUrl": data[0].imageUrl})
   })
   .catch(err => console.error(err))
 })
