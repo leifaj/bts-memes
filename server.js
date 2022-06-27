@@ -25,7 +25,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 // Read (Get)
-app.get('/', (req, res) => {
+app.get('https://bts-memes-api.herokuapp.com/', (req, res) => {
   memeCollection.find().toArray()
   .then(data => {
     res.render('index.ejs', { memeData: data })
@@ -34,7 +34,7 @@ app.get('/', (req, res) => {
 })
 
 // Filter
-app.get('/filter', (req, res) => {
+app.get('https://bts-memes-api.herokuapp.com/filter', (req, res) => {
   const queryObj = url.parse(req.url, true).query
   const query = JSON.parse(JSON.stringify(queryObj))
   if (query.member === "All") {delete query.member}
@@ -58,7 +58,7 @@ app.get('/filter', (req, res) => {
 // PUBLIC API ROUTES --------------------------------
 
 // Return all memes
-app.get('/memes', (req, res) => {
+app.get('https://bts-memes-api.herokuapp.com/memes', (req, res) => {
   memeCollection.find().toArray()
   .then(data => {
     res.status(200).json({"member": data[0].member,
@@ -70,7 +70,7 @@ app.get('/memes', (req, res) => {
 })
 
 // Return array of memes by member
-app.get('/memes/member/:member', (req, res) => {
+app.get('https://bts-memes-api.herokuapp.com/memes/member/:member', (req, res) => {
   memeCollection.find(
     {"member": req.params.member},
     { collation: // case insensitive index
@@ -90,7 +90,7 @@ app.get('/memes/member/:member', (req, res) => {
 })
 
 // Return array of memes by category
-app.get('/memes/category/:category', (req, res) => {
+app.get('https://bts-memes-api.herokuapp.com/memes/category/:category', (req, res) => {
   memeCollection.find(
     {"category": req.params.category},
     { collation: // case insensitive index
@@ -110,7 +110,7 @@ app.get('/memes/category/:category', (req, res) => {
 })
 
 // Return a random meme
-app.get('/memes/random', (req, res) => {
+app.get('https://bts-memes-api.herokuapp.com/memes/random', (req, res) => {
   memeCollection.aggregate([{ $sample: { size: 1 } }])
   .toArray()
   .then(data => {
