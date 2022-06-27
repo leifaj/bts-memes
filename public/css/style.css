@@ -260,29 +260,18 @@ input[type=file]::-webkit-file-upload-button {
 }
 
 button:hover,
-button:focus,
-button:active,
+button:hover,
 input[type=file]::file-selector-button:hover,
-input[type=file]::file-selector-button:focus,
-input[type=file]::file-selector-button:active,
 #randomButton:hover,
-#randomButton:focus,
-#randomButton:active,
 .endpoint button:hover,
-.endpoint button:hover a, 
-.endpoint button:focus,
-.endpoint button:focus a, 
-.endpoint button:active,
-.endpoint button:active a {
+.endpoint button:hover a {
   background: var(--dark-purple);
   color: white;
   transition: .2s ease;
   cursor: pointer;
 }
 
-.submit-btn:hover 
-.submit-btn:focus, 
-.submit-btn:active {
+.submit-btn:hover {
   background: var(--light-purple);
   color: var(--dark-purple);
   border: 1px solid var(--dark-purple);
@@ -319,9 +308,7 @@ input[type=file]::file-selector-button:active,
   object-fit: contain;
 }
 
-.meme:hover::before, 
-.meme:focus::before,
-.meme:active::before {
+.meme:hover::before {
   background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
   height: 100%;
@@ -349,9 +336,7 @@ input[type=file]::file-selector-button:active,
   font-weight: 600;
 }
 
-.meme:hover #memeInfo,
-.meme:focus #memeInfo,
-.meme:active #memeInfo {
+.meme:hover #memeInfo {
   width: 100%;
   height: 100%;
   color: white;
