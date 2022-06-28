@@ -18,19 +18,19 @@
     <h1>BTS Memes API</h1>
     <nav>
       <a href="/">Home</a>
-      <a href="/filter">Memes</a>
+      <a href="/filter">Meme List</a>
     </nav>
   </header>
 
   <main>
     <section class="intro">
-      <h2 class="intro-text">BTS memes that you can search by member and category, easily accessible through this API.
+      <h2 class="intro-text">BTS memes that you can search by member and category, easily accessible through this API. <br>
         Now you won't have trouble finding the right reaction photo!</h2>
     </section>
     <section class="random">
       <h2>Live Demo</h2>
-      <p>Hover (hold-click on mobile) the meme to see details.</p>
       <button id="randomButton">Get Random Meme</button>
+      <p>Click the "Show/Hide Info" button to toggle details.</p>
       <section class="meme randomMeme">
         <img id="memeImage" src="/assets/jhope-love.jpeg">
         <button id="toggleButton">Show Info</button>
@@ -76,6 +76,8 @@
 
       <section class="endpoint-section">
         <h2>API Endpoints</h2>
+        <p>Developers, feel free to use these endpoints to make your own apps.<br>
+        Click the endpoint buttons for an example of the information you can get from this API.</p>
         <section class="endpoints">
           <div class="endpoint">
             <button><a href="/memes" target="_blank">GET/memes</a></button>
