@@ -435,6 +435,11 @@ footer {
     font-size: 12px;
   }
 
+  header h1,
+  header a {
+    font-size: 1.25rem;
+  }
+
   main > section {
     width: 100%;
   }
