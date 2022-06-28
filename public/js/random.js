@@ -1,4 +1,5 @@
 const randomBtn = document.querySelector('#randomButton')
+
 randomBtn.addEventListener('click', getRandomMeme)
 
 async function getRandomMeme(e) {

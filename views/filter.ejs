@@ -77,6 +77,7 @@
         <% for(let i = 0; i < memeData.length; i++) {%>
           <li class="meme">
             <img id="memeImage" src="<%= memeData[i].imageUrl %>">
+            <button id="toggleButton">Show Info</button>
             <div id="memeInfo">
               <p id="memeDescription"><%= memeData[i].description %></p>
               <span id="memeMember"><%= memeData[i].member %></span>
@@ -90,7 +91,7 @@
 
   
 
-  <script src='js/main.js'></script>
+  <script src='js/toggle.js'></script>
 
 </body>
 </html>
