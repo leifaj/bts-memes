@@ -10,108 +10,87 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/a7a2c3e7aa.js" crossorigin="anonymous"></script>
   
 </head>
 <body>
   <header>
-    <h1>BTS Memes API</h1>
+    <h1>BTS Memes</h1>
     <nav>
-      <a href="/">Home</a>
-      <a href="/filter">Meme List</a>
+      <a href="/">Search</a>
+      <a href="/filter">About</a>
     </nav>
   </header>
 
   <main>
-    <section class="intro">
-      <h2 class="intro-text">BTS memes that you can search by member and category, easily accessible through this API.
-        Now you won't have trouble finding the right reaction photo!</h2>
-    </section>
-    <section class="random">
-      <h2>Live Demo</h2>
-      <button id="randomButton">Get Random Meme</button>
-      <p>Click the "Show/Hide Info" button to toggle details.</p>
-      <section class="meme randomMeme">
-        <img id="memeImage" src="/assets/jhope-love.jpeg">
-        <button id="toggleButton">Show Info</button>
-        <div id="memeInfo">
-          <p id="memeDescription">J-Hope surrounded by hearts</p>
-          <span id="memeMember">J-Hope</span>
-          <span id="memeCategory">Love</span>
+    <section class="filter-section">
+      <h2>Search Memes</h2>
+      <form action="/filter" method="GET" enctype="multipart/form-data">
+      <div class="form-inputs">
+        <div class="form-input">
+          <label for="member">Member</label>
+          <select name="member" class="input">
+            <option value="All">All</option>
+            <option value="Namjoon">Namjoon</option>
+            <option value="Jin">Jin</option>
+            <option value="Yoongi">Yoongi</option>
+            <option value="J-Hope">J-Hope</option>
+            <option value="Jimin">Jimin</option>
+            <option value="Taehyung">Taehyung</option>
+            <option value="Jungkook">Jungkook</option>
+            <option value="Other">Other</option>
+          </select>
         </div>
-      </section>
+        <div class="form-input">
+          <label for="category">Category *</label>
+          <select name="category" class="input">
+            <optgroup label="Positive">
+              <option value="Funny">Funny</option>
+              <option value="Like">Like</option>
+              <option value="Love">Love</option>
+            </optgroup>
+            <optgroup label="Negative">
+              <option value="Anger">Anger</option>
+              <option value="Fear">Fear</option>
+              <option value="Dislike">Dislike</option>
+              <option value="Jealousy">Jealousy</option>
+              <option value="Pain">Pain</option>
+              <option value="Sadness">Sadness</option>
+            </optgroup>
+            <optgroup label="Neutral">
+              <option value="Confusion">Confusion</option>
+              <option value="Head Empty">Head Empty</option>
+              <option value="I'm a mess">I'm a mess</option>
+              <option value="Unbothered">Unbothered</option>
+              <option value="Shock">Shock</option>
+              <option value="Other">Other</option>
+            </optgroup>
+          </select>
+        </div>
+        <button type="submit" class="submit-btn">Search</button>
+      </div>
+      </form>
     </section>
 
-    <section class="bottom">
-      <section class="documentation">
-        <h2>Documentation</h2>
-        <h3>There are 4 properties that come with each resource object:</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>PROPERTY</th>
-              <th>DESCRIPTION</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>member</td>
-              <td>[String] Name of the BTS member in the meme.</td>
-            </tr>
-            <tr>
-              <td>category</td>
-              <td>[String] Category of the meme, usually an emotion or theme.</td>
-            </tr>
-            <tr>
-              <td>description</td>
-              <td>[String] (Optional) Description of the meme.</td>
-            </tr>
-            <tr>
-              <td>imageUrl</td>
-              <td>[String] URL of the meme image that is hosted on Cloudinary.</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-
-      <section class="endpoint-section">
-        <h2>API Endpoints</h2>
-        <p>Developers, feel free to use these endpoints to make your own apps.<br>
-        Click the endpoint buttons for an example of the information you can get from this API.</p>
-        <section class="endpoints">
-          <div class="endpoint">
-            <button><a href="/memes" target="_blank">GET/memes</a></button>
-            <p>Return all memes</p>
-          </div>
-          <div class="endpoint">
-            <button><a href="/memes/member/jungkook" target="_blank">GET/memes/member/:member</a></button>
-            <p>Return array of memes by member</p>
-          </div>
-          <div class="endpoint">
-            <button><a href="/memes/category/sadness" target="_blank">GET/memes/category/:category</a></button>
-            <p>Return array of memes by category</p>
-          </div>
-          <div class="endpoint">
-            <button><a href="/memes/random" target="_blank">GET/memes/random</a></button>
-            <p>Return a random meme</p>
-          </div>
-        </section>
-      </section>
+    <section class="list-section">
+      <ul class="meme-list">
+        <% for(let i = 0; i < memeData.length; i++) {%>
+          <li class="meme">
+            <img id="memeImage" src="<%= memeData[i].imageUrl %>">
+            <button id="toggleButton">Show Info</button>
+            <div id="memeInfo">
+              <p id="memeDescription"><%= memeData[i].description %></p>
+              <span id="memeMember"><%= memeData[i].member %></span>
+              <span id="memeCategory"><%= memeData[i].category %></span>
+            </div>
+          </li>
+        <% } %>
+        </ul>
     </section>
   </main>
 
-  <footer>
-    <ul class="contact-list">
-      <li><a href="https://github.com/leifaj" target="_blank"><i class="fa-brands fa-github"></i></a></li>
-      <li><a href="https://www.linkedin.com/in/leiannefaj/" target="_blank"><i class="fa-brands fa-linkedin"></i></a></li>
-      <li><a href="https://twitter.com/leiannefaj" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>
-      <li><a href="mailto:leianne.fajutagana@gmail.com"><i class="fa-solid fa-envelope"></i></a></li>
-    </ul>
-    <p>Website - Copyright © Leianne Fajutagana</p>
-    <p>Images - Not my own; found via Twitter & Pinterest</p>
-  </footer>
+  
 
-  <script src='js/random.js'></script>
   <script src='js/toggle.js'></script>
+
 </body>
 </html>

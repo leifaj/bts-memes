@@ -48,7 +48,7 @@ app.get('/filter', (req, res) => {
     }
   ).toArray()
   .then(data => {
-    res.render('filter.ejs', { memeData: data })
+    res.render('api.ejs', { memeData: data })
   })
   .catch(err => console.error(err))
 })
