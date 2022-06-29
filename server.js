@@ -23,16 +23,16 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 // Read (Get)
-app.get('/', (req, res) => {
+app.get('/filter', (req, res) => {
   memeCollection.find().toArray()
   .then(data => {
-    res.render('index.ejs', { memeData: data })
+    res.render('api.ejs', { memeData: data })
   })
   .catch(err => console.error(err))
 })
 
 // Filter
-app.get('/filter', (req, res) => {
+app.get('/', (req, res) => {
   const queryObj = url.parse(req.url, true).query
   const query = JSON.parse(JSON.stringify(queryObj))
   if (query.member === "All") {delete query.member}
