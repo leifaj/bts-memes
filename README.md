@@ -9,19 +9,51 @@ A RESTful API that uses HTTP requests to create, delete, and read bts meme image
 - The public site shows an example of how the memes can be filtered by member and category:
 <img src="./public/assets/search-demo.gif" width="100%">
 - The following GET requests can be made:
-| Endpoint                     | Description                       |
-|------------------------------|-----------------------------------|
-| GET/memes                    | Return all memes                  |
-| GET/memes/member/:member     | Return array of memes by member   |
-| GET/memes/category/:category | Return array of memes by category |
-| GET/memes/random             | Return a random meme              |
+<table>
+    <tr>
+        <td>Endpoint</td>
+        <td>Description</td>
+    </tr>
+    <tr>
+        <td>GET/memes</td>
+        <td>Return all memes</td>
+    </tr>
+    <tr>
+        <td>GET/memes/member/:member</td>
+        <td>Return array of memes by member</td>
+    </tr>
+    <tr>
+        <td>GET/memes/category/:category</td>
+        <td>Return array of memes by category</td>
+    </tr>
+    <tr>
+        <td>GET/memes/random</td>
+        <td>Return a random meme</td>
+    </tr>
+</table>
 - Each resource object will come with:
-| Property    | Description                                                  |
-|-------------|--------------------------------------------------------------|
-| member      | [String] Name of the BTS member in the meme.                 |
-| category    | [String] Category of the meme, usually an emotion or theme.  |
-| description | [String] (Optional) Description of the meme.                 |
-| imageUrl    | [String] URL of the meme image that is hosted on Cloudinary. |
+<table>
+    <tr>
+        <td>Property</td>
+        <td>Description</td>
+    </tr>
+    <tr>
+        <td>member</td>
+        <td>[String] Name of the BTS member in the meme.</td>
+    </tr>
+    <tr>
+        <td>category</td>
+        <td>[String] Category of the meme, usually an emotion or theme.</td>
+    </tr>
+    <tr>
+        <td>description</td>
+        <td>[String] (Optional) Description of the meme.</td>
+    </tr>
+    <tr>
+        <td>imageUrl</td>
+        <td>[String] URL of the meme image that is hosted on Cloudinary.</td>
+    </tr>
+</table>
 
 ### POST (not public): This request creates a new meme to store in MongoDB. In the example, a new meme is created with a form.
 ### DELETE (not public): This request deletes a meme from MongoDB. In the example, a meme is deleted with a button.
