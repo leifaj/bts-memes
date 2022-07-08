@@ -23,7 +23,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 // Read (Get)
-app.get('/filter', (req, res) => {
+app.get('/api', (req, res) => {
   memeCollection.find().toArray()
   .then(data => {
     res.render('api.ejs', { memeData: data })
@@ -31,7 +31,7 @@ app.get('/filter', (req, res) => {
   .catch(err => console.error(err))
 })
 
-// Filter
+// Search
 app.get('/', (req, res) => {
   const queryObj = url.parse(req.url, true).query
   const query = JSON.parse(JSON.stringify(queryObj))
