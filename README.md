@@ -1,15 +1,16 @@
 # BTS Memes API
 
 ## About
-A RESTful API that uses HTTP requests to create, delete, and read bts meme images from a MongoDB database.
+A RESTful API that uses HTTP requests to create, delete, and read bts meme images from a MongoDB database. <br>
 [Click here](https://bts-memes-api.herokuapp.com/) to view the public site.
 
-### GET Endpoint (Public)
-- This request returns memes from the MongoDB database. 
-- The public site shows an example of how the memes can be filtered by member and category:
-<img src="./public/assets/search-demo.gif" width="100%">
+#### GET Endpoint (Public)
+This request returns memes from the MongoDB database. <br>
+The public site shows an example of how the memes can be filtered by member and category:
 
-- The following GET requests can be made:
+<img src="./public/assets/search-demo.gif" width="75%">
+
+The following GET requests can be made:
 
 <table>
     <tr>
@@ -34,7 +35,7 @@ A RESTful API that uses HTTP requests to create, delete, and read bts meme image
     </tr>
 </table>
 
-- Each resource object will come with:
+Each resource object will come with:
 
 <table>
     <tr>
@@ -59,8 +60,11 @@ A RESTful API that uses HTTP requests to create, delete, and read bts meme image
     </tr>
 </table>
 
-### POST (not public): This request creates a new meme to store in MongoDB. In the example, a new meme is created with a form.
-### DELETE (not public): This request deletes a meme from MongoDB. In the example, a meme is deleted with a button.
+#### POST (Not Public)
+- This request creates a new meme to store in MongoDB. In the example, a new meme is created with a form.
+
+#### DELETE (Not Public)
+- This request deletes a meme from MongoDB. In the example, a meme is deleted with a button.
 
 
 ## How It's Made
