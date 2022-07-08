@@ -8,7 +8,9 @@ A RESTful API that uses HTTP requests to create, delete, and read bts meme image
 - This request returns memes from the MongoDB database. 
 - The public site shows an example of how the memes can be filtered by member and category:
 <img src="./public/assets/search-demo.gif" width="100%">
+
 - The following GET requests can be made:
+
 <table>
     <tr>
         <td>Endpoint</td>
@@ -31,7 +33,9 @@ A RESTful API that uses HTTP requests to create, delete, and read bts meme image
         <td>Return a random meme</td>
     </tr>
 </table>
+
 - Each resource object will come with:
+
 <table>
     <tr>
         <td>Property</td>
