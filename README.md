@@ -9,9 +9,19 @@ A RESTful API that uses HTTP requests to create, delete, and read bts meme image
 - The public site shows an example of how the memes can be filtered by member and category:
 <img src="./public/assets/search-demo.gif" width="100%">
 - The following GET requests can be made:
-<img src="./public/assets/endpoints.png" width="100%">
+| Endpoint                     | Description                       |
+|------------------------------|-----------------------------------|
+| GET/memes                    | Return all memes                  |
+| GET/memes/member/:member     | Return array of memes by member   |
+| GET/memes/category/:category | Return array of memes by category |
+| GET/memes/random             | Return a random meme              |
 - Each resource object will come with:
-<img src="./public/assets/properties.png" width="100%">
+| Property    | Description                                                  |
+|-------------|--------------------------------------------------------------|
+| member      | [String] Name of the BTS member in the meme.                 |
+| category    | [String] Category of the meme, usually an emotion or theme.  |
+| description | [String] (Optional) Description of the meme.                 |
+| imageUrl    | [String] URL of the meme image that is hosted on Cloudinary. |
 
 ### POST (not public): This request creates a new meme to store in MongoDB. In the example, a new meme is created with a form.
 ### DELETE (not public): This request deletes a meme from MongoDB. In the example, a meme is deleted with a button.
